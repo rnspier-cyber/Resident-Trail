@@ -2,154 +2,138 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>RESIDENT TRAIL: RURAL ER v2.0</title>
-<style>
-    :root {
-        --glow-color: #33ff33;
-        --bg-color: #050505;
-    }
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>RESIDENT TRAIL: RURAL ER v2.5</title>
+    <style>
+        :root {
+            --glow-color: #33ff33;
+            --bg-color: #050505;
+            --font-main: 'Courier New', Courier, monospace;
+        }
 
-    body { 
-        background: var(--bg-color); 
-        color: var(--glow-color); 
-        font-family: 'Courier New', Courier, monospace; 
-        display: flex; 
-        flex-direction: column; 
-        align-items: center; 
-        margin: 0; 
-        padding: 0;
-        min-height: 100vh;
-        /* Prevents iOS text size adjustment on orientation change */
-        -webkit-text-size-adjust: 100%; 
-    }
+        body { 
+            background: var(--bg-color); 
+            color: var(--glow-color); 
+            font-family: var(--font-main); 
+            margin: 0; 
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
 
-    #game-container { 
-        border: 4px solid var(--glow-color); 
-        background: #000; 
-        padding: 20px; 
-        width: 95%; /* Responsive width */
-        max-width: 900px; 
-        min-height: 90vh;
-        margin: 10px auto;
-        box-shadow: 0 0 20px #00ff0022; 
-        position: relative; 
-        display: flex; 
-        flex-direction: column; 
-        box-sizing: border-box;
-    }
-
-    /* TYPOGRAPHY */
-    #screen { 
-        width: 100%; 
-        flex-grow: 1; 
-        border-bottom: 2px solid var(--glow-color); 
-        margin-bottom: 20px; 
-        overflow-y: auto; 
-        white-space: pre-wrap; 
-        font-size: 18px; /* Larger base font for readability */
-        line-height: 1.5; 
-        padding-bottom: 10px; 
-    }
-
-    .stats { 
-        display: flex; 
-        justify-content: space-between; 
-        align-items: center; 
-        margin-bottom: 15px; 
-        font-weight: bold; 
-        border-bottom: 1px solid var(--glow-color); 
-        padding-bottom: 10px; 
-        font-size: 14px; 
-        flex-wrap: wrap; /* Wraps stats on small screens */
-    }
-
-    /* BUTTONS / INTERACTIVE */
-    .options { 
-        display: grid; 
-        grid-template-columns: 1fr; 
-        gap: 12px; 
-        padding-bottom: 20px;
-    }
-
-    button { 
-        background: black; 
-        color: var(--glow-color); 
-        border: 1px solid var(--glow-color); 
-        padding: 15px; /* Larger hit area for thumbs */
-        cursor: pointer; 
-        text-align: left; 
-        font-family: 'Courier New', Courier, monospace; 
-        font-size: 16px; /* Easy to read on mobile */
-        transition: 0.2s; 
-        width: 100%;
-        box-sizing: border-box;
-    }
-
-    button:hover, button:active { 
-        background: var(--glow-color); 
-        color: black; 
-    }
-
-    /* START SCREEN SCALING */
-    #start-screen { 
-        position: absolute; 
-        top: 0; left: 0; width: 100%; height: 100%; 
-        background: #000; z-index: 50; 
-        display: flex; flex-direction: column; 
-        justify-content: center; align-items: center; 
-        text-align: center; 
-        padding: 20px;
-        box-sizing: border-box;
-    }
-
-    #ascii-art { 
-        color: var(--glow-color); 
-        font-size: 1.2vw; /* Scales with screen width */
-        font-weight: bold; 
-        line-height: 1.2; 
-        text-shadow: 0 0 5px var(--glow-color); 
-    }
-
-    /* MOBILE SPECIFIC OVERRIDES */
-    @media (max-width: 600px) {
-        #game-container {
-            border-width: 2px;
-            padding: 12px;
+        /* Container that adjusts to screen size */
+        #game-container { 
+            display: flex;
+            flex-direction: column;
             width: 100%;
-            margin: 0;
-            height: 100vh;
+            max-width: 900px;
+            margin: 0 auto;
+            min-height: 100vh;
+            border-left: 2px solid #113311;
+            border-right: 2px solid #113311;
+            background: #000;
+            padding: 15px;
+            box-sizing: border-box;
+            position: relative;
         }
 
-        #screen {
-            font-size: 16px; /* Slightly smaller than desktop but still large for mobile */
-        }
-
-        #ascii-art {
-            font-size: 6px; /* Keep the logo from breaking the layout */
-        }
-
-        .stats span {
-            width: 45%; /* Stack stats in two columns */
-            margin-bottom: 5px;
+        /* HEADER & STATS */
+        .stats { 
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            border-bottom: 2px solid var(--glow-color);
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+            font-size: 14px;
+            text-transform: uppercase;
         }
         
-        button {
-            padding: 18px; /* Even bigger buttons for mobile touch */
-            font-size: 15px;
-        }
-    }
+        .stats span { display: block; }
+        .val { color: #fff; text-shadow: 0 0 5px #fff; }
 
-    /* CRT SCANLINE EFFECT */
-    .crt-overlay { 
-        pointer-events: none; 
-        position: absolute; 
-        top: 0; left: 0; width: 100%; height: 100%; 
-        background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%), 
-                    linear-gradient(90deg, rgba(255, 0, 0, 0.02), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.02)); 
-        background-size: 100% 3px, 3px 100%; 
-        z-index: 100; 
-    }
-</style>
+        /* THE TEXT SCREEN - Bumping size significantly */
+        #screen { 
+            flex-grow: 1;
+            font-size: 20px; /* Large, readable text */
+            line-height: 1.6;
+            margin-bottom: 20px;
+            white-space: pre-wrap;
+            overflow-wrap: break-word;
+        }
+
+        /* OPTIONS / BUTTONS */
+        .options { 
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: auto; /* Pushes buttons to bottom of view */
+            padding-bottom: 30px;
+        }
+
+        button { 
+            background: #0a1a0a;
+            color: var(--glow-color);
+            border: 2px solid var(--glow-color);
+            padding: 20px 15px; /* Large touch target */
+            font-family: var(--font-main);
+            font-size: 18px; /* Large button text */
+            font-weight: bold;
+            text-align: left;
+            cursor: pointer;
+            width: 100%;
+            box-sizing: border-box;
+            border-radius: 4px;
+            transition: background 0.2s;
+        }
+
+        button:active {
+            background: var(--glow-color);
+            color: #000;
+        }
+
+        /* START SCREEN OVERHAUL */
+        #start-screen { 
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: #000;
+            z-index: 200;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            text-align: center;
+        }
+
+        #ascii-art { 
+            font-size: 10px; 
+            line-height: 1;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        /* MOBILE OVERRIDES */
+        @media (max-width: 600px) {
+            #ascii-art { font-size: 6px; }
+            #screen { font-size: 18px; }
+            button { font-size: 16px; padding: 22px 15px; }
+            .stats { font-size: 12px; }
+        }
+
+        /* SCANLINE EFFECT - Modified for mobile performance */
+        .crt-overlay { 
+            pointer-events: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%);
+            background-size: 100% 4px;
+            z-index: 150;
+            opacity: 0.3;
+        }
+    </style>
 </head>
 <body>
 
