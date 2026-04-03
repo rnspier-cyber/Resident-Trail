@@ -11204,7 +11204,496 @@ const DISEASE_DB = [
                 { t: "Good job", s: 0, f: "Whatever.", correct: false }
             ]}
         ]
-    }
+    },
+{
+    name: "Supraventricular Tachycardia (SVT)",
+    intro: "A 28-year-old presents sweating and clutching their chest. Monitor shows a narrow complex tachycardia at 220 BPM. BP is 110/70. They are conscious and talking.",
+    steps: [
+      {
+        q: "What is your initial intervention?",
+        choices: [
+          { t: "Vagal maneuvers (Bear down!)", s: 50, f: "Good conservative start, though it rarely works. The patient just looks constipated now.", correct: true },
+          { t: "Synchronized cardioversion", s: -200, f: "They are stable and awake! You just traumatized them and caught an assault charge.", correct: false },
+          { t: "Amiodarone 150mg IV", s: -50, f: "Wrong antiarrhythmic for this rate and rhythm, rookie.", correct: false },
+          { t: "Defibrillate at 200J", s: -500, f: "You just shocked a stable patient with a pulse. They are now in V-Fib. Hope you have malpractice insurance.", correct: false }
+        ]
+      },
+      {
+        q: "Vagal maneuvers failed. Heart rate is still 220. What pharmacological agent do you push?",
+        choices: [
+          { t: "Adenosine 6mg rapid IV push", s: 150, f: "Perfect. The chemical cardioversion. Warn them about the impending sense of doom.", correct: true },
+          { t: "Epinephrine 1mg IV", s: -500, f: "You just poured gasoline on a fire. Their heart exploded. Time of death: Now.", correct: false },
+          { t: "Lidocaine 100mg IV", s: -100, f: "That's for ventricular arrhythmias, not supraventricular. Read a book.", correct: false },
+          { t: "Atropine 1mg IV", s: -300, f: "Atropine INCREASES heart rate. Are you trying to set a land speed record?", correct: false }
+        ]
+      },
+      {
+        q: "You push the Adenosine. The monitor suddenly flatlines. The patient gasps.",
+        choices: [
+          { t: "Start CPR immediately!", s: -100, f: "You just broke their ribs for a normal drug reaction. The attending is laughing at you.", correct: false },
+          { t: "Give another 12mg of Adenosine", s: -100, f: "They are already paused! Why would you give more?", correct: false },
+          { t: "Watch the monitor and reassure the patient", s: 100, f: "Correct. A brief period of asystole is normal. The rhythm snaps back into a sinus rhythm of 85 BPM. Nice save.", correct: true },
+          { t: "Push Epinephrine", s: -400, f: "You panicked. Now they are back in tachycardia and hypertensive.", correct: false }
+        ]
+      }
+    ]
+  },
+  {
+    name: "Diabetic Ketoacidosis (DKA)",
+    intro: "A 19-year-old type 1 diabetic is rolled in confused. He is breathing rapidly and deeply (Kussmaul respirations). The room smells like rotting fruit. Blood sugar reads 'HIGH'.",
+    steps: [
+      {
+        q: "What is your absolute first priority in treating this profound acid-base derangement?",
+        choices: [
+          { t: "IV Insulin bolus", s: -150, f: "Wrong. You push insulin now, fluid shifts into the cells and tanks their vascular volume. You just caused cardiovascular collapse.", correct: false },
+          { t: "Aggressive IV Fluid Resuscitation (Normal Saline)", s: 150, f: "Excellent. They are massively dehydrated from osmotic diuresis. Fill the tank first.", correct: true },
+          { t: "Sodium Bicarbonate IV", s: -100, f: "Bicarb in DKA is almost always a trap. You just worsened their intracellular acidosis.", correct: false },
+          { t: "Intubation", s: -300, f: "You took away their respiratory compensation. Their pH drops to 6.8 and they code.", correct: false }
+        ]
+      },
+      {
+        q: "Fluids are running. You are preparing to start an IV insulin drip. What electrolyte MUST you check before turning on the insulin?",
+        choices: [
+          { t: "Sodium", s: -50, f: "Sodium is artificially low in DKA due to glucose, but it's not the lethal threat right now.", correct: false },
+          { t: "Potassium", s: 150, f: "Crucial! Insulin drives potassium into cells. If they are already hypokalemic, insulin will stop their heart.", correct: true },
+          { t: "Calcium", s: -50, f: "Not the priority. Are you just guessing?", correct: false },
+          { t: "Magnesium", s: -50, f: "Important, but won't kill them in the next 5 minutes like the other one.", correct: false }
+        ]
+      }
+    ]
+  },
+  {
+    name: "Anaphylactic Shock",
+    intro: "A 35-year-old ate a peanut butter cookie by mistake. They have severe facial swelling, widespread hives, and you hear high-pitched wheezing (stridor) when they inhale.",
+    steps: [
+      {
+        q: "The patient is experiencing a severe Type I hypersensitivity reaction. What is the immediate first-line drug and route?",
+        choices: [
+          { t: "Diphenhydramine (Benadryl) 50mg IV", s: -100, f: "Benadryl is great for the hives, but does NOTHING to save their closing airway. They are turning blue.", correct: false },
+          { t: "Epinephrine 1:1000 0.3mg to 0.5mg IM", s: 150, f: "Textbook. Alpha-1 vasoconstriction, Beta-2 bronchodilation. You just saved their airway.", correct: true },
+          { t: "Methylprednisolone 125mg IV", s: -100, f: "Steroids take hours to work. The patient will be dead in 5 minutes.", correct: false },
+          { t: "Epinephrine 1:10,000 1mg IV Push", s: -500, f: "That's the cardiac arrest dose! You just gave them a massive myocardial infarction. RIP.", correct: false }
+        ]
+      },
+      {
+        q: "You gave the IM Epi. The airway opens slightly, but their blood pressure drops to 70/40. What's next?",
+        choices: [
+          { t: "Push IV push Epi", s: -200, f: "Still too aggressive. You run a high risk of lethal arrhythmias.", correct: false },
+          { t: "Give aggressive IV fluids and prepare an Epi drip", s: 100, f: "Correct. Anaphylaxis causes massive vasodilation. Fill the pipes and keep the pressors running. They survive.", correct: true },
+          { t: "Give IV Glucagon", s: -50, f: "Only indicated if they are on Beta-blockers and refractory to Epi. They aren't.", correct: false },
+          { t: "Place them in high Fowler's position", s: -100, f: "Gravity just took what little blood pressure they had left away from their brain. They pass out.", correct: false }
+        ]
+      }
+    ]
+  },
+  {
+    name: "Inferior STEMI",
+    intro: "A 60-year-old male complains of crushing chest pain and nausea. The 12-lead EKG shows huge ST elevations in leads II, III, and aVF.",
+    steps: [
+      {
+        q: "You diagnose an Inferior Wall Myocardial Infarction. The nurse is handing you a sublingual Nitroglycerin pill. What do you do?",
+        choices: [
+          { t: "Give the Nitro immediately", s: -300, f: "Fatal error! Inferior MIs often involve the right ventricle. Nitro wiped out his preload. His BP is now 40/palp. He codes.", correct: false },
+          { t: "Order a Right-Sided EKG first", s: 150, f: "Brilliant. You must rule out right ventricular involvement before giving preload-reducing agents.", correct: true },
+          { t: "Give Morphine instead", s: -100, f: "Morphine also drops preload and masks the pain without fixing the ischemia. Try again.", correct: false },
+          { t: "Administer high-flow oxygen", s: -50, f: "His O2 sat is 98%. Supplemental O2 can cause coronary vasoconstriction. Stop relying on TV medical shows.", correct: false }
+        ]
+      },
+      {
+        q: "Right-sided EKG shows V4R elevation. It is a Right Ventricular infarct. His BP is dropping. How do you treat his hypotension?",
+        choices: [
+          { t: "Nitroglycerin drip", s: -500, f: "Did you learn nothing from the last step? He's dead.", correct: false },
+          { t: "IV Fluid Bolus", s: 100, f: "Yes. The right ventricle is stunned and needs high volume to push blood to the left side. BP improves. Cath lab is on the way.", correct: true },
+          { t: "Amiodarone", s: -100, f: "He's not in an arrhythmia, he's cardiogenic shock.", correct: false },
+          { t: "Beta-blockers", s: -200, f: "You just slowed down a failing heart. Good job, Dr. Death.", correct: false }
+        ]
+      }
+    ]
+  },
+  {
+    name: "Opiate Overdose",
+    intro: "EMS wheels in a 20-year-old found unresponsive at a party. Pupils are pinpoint. Respiratory rate is 4 breaths per minute. Oxygen saturation is 78%.",
+    steps: [
+      {
+        q: "What is your immediate priority?",
+        choices: [
+          { t: "Slam 2mg of Naloxone (Narcan) IV push", s: -100, f: "You just threw them into violent, explosive withdrawal. They wake up, vomit, aspirate, and punch you in the face.", correct: false },
+          { t: "Bag-valve-mask (BVM) ventilation with 100% O2", s: 150, f: "Always fix the airway and breathing first! Hypoxia kills faster than the drug itself.", correct: true },
+          { t: "Start an IV and give Flumazenil", s: -200, f: "Flumazenil is for benzos, and can cause intractable seizures. Wrong drug.", correct: false },
+          { t: "Check a blood sugar", s: -50, f: "Always good to check, but not while they are turning into a smurf from hypoxia.", correct: false }
+        ]
+      },
+      {
+        q: "They are being ventilated and saturating at 99%. Now you want to reverse the opioid. How do you dose the Naloxone?",
+        choices: [
+          { t: "0.04mg IV, titrate to spontaneous breathing", s: 100, f: "Excellent pharmacology. You restored breathing without causing severe withdrawal. Smooth operation.", correct: true },
+          { t: "4mg Intranasal", s: 50, f: "It works, but IV titration is better in a controlled ER setting.", correct: false },
+          { t: "10mg IV push", s: -200, f: "Complete overkill. The resulting sympathetic surge causes pulmonary edema.", correct: false },
+          { t: "Give Methadone", s: -300, f: "You just gave a longer-acting opioid to someone overdosing on opioids. Surrender your badge.", correct: false }
+        ]
+      }
+    ]
+  },
+  {
+    name: "Tension Pneumothorax",
+    intro: "A construction worker fell 20 feet. He has severe shortness of breath, absent breath sounds on the right, and his trachea is visibly deviating to the left. BP is 70/40.",
+    steps: [
+      {
+        q: "He is rapidly decompensating. What is your next move?",
+        choices: [
+          { t: "Order a STAT Portable Chest X-Ray", s: -400, f: "Never delay treatment of a tension pneumothorax for an X-ray! He arrests while you wait for radiology.", correct: false },
+          { t: "Intubate immediately", s: -200, f: "Positive pressure ventilation will make the tension pneumothorax massive. His heart gets crushed and stops.", correct: false },
+          { t: "Needle decompression (14G needle, 2nd intercostal space, midclavicular line)", s: 150, f: "You hear a massive hiss of air. BP shoots up to 110/70. You saved his life.", correct: true },
+          { t: "Give a 1L fluid bolus", s: -100, f: "It's an obstructive shock, not hypovolemic. Fluids won't fix the trapped air crushing his vena cava.", correct: false }
+        ]
+      },
+      {
+        q: "The needle decompressed the tension, but it's only a temporary fix. What is the definitive treatment?",
+        choices: [
+          { t: "Leave the needle in and admit to Med-Surg", s: -300, f: "The needle occludes. The tension re-accumulates. He dies on the floor.", correct: false },
+          { t: "Perform a Pericardiocentesis", s: -200, f: "Wrong sac, cowboy. You just poked a hole in his heart.", correct: false },
+          { t: "Insert a thoracostomy (Chest Tube)", s: 100, f: "Correct. Tube placed in the 5th intercostal space, anterior axillary line. Lung re-expands. Good work.", correct: true },
+          { t: "Wrap his chest tight with a bandage", s: -150, f: "You just restricted his good lung from expanding. Terrible.", correct: false }
+        ]
+      }
+    ]
+  },
+  {
+    name: "Status Asthmaticus",
+    intro: "A 22-year-old asthmatic comes in tripoding, unable to speak in full sentences. Suddenly, her loud wheezing stops, and you hear NO breath sounds. She is lethargic.",
+    steps: [
+      {
+        q: "She has a 'silent chest'. This is impending respiratory failure. What do you do?",
+        choices: [
+          { t: "Give Albuterol via nebulizer", s: -100, f: "She's not moving any air! The nebulizer won't reach her lungs.", correct: false },
+          { t: "Give Epinephrine 0.3mg IM and prepare to intubate", s: 150, f: "Correct. The IM Epi will bronchodilate systemically, buying you time to secure the airway.", correct: true },
+          { t: "Give IV Solu-Medrol and wait 30 minutes", s: -300, f: "Steroids take hours to work. She will be dead in 3 minutes.", correct: false },
+          { t: "Tell her to take slow, deep breaths", s: -100, f: "She's lethargic and her airways are clamped shut. Coaching breathing is useless right now.", correct: false }
+        ]
+      },
+      {
+        q: "You are preparing to intubate. Which induction agent is preferred due to its bronchodilatory properties?",
+        choices: [
+          { t: "Propofol", s: -50, f: "Drops blood pressure and has no bronchodilatory effects. Not the best choice.", correct: false },
+          { t: "Ketamine", s: 150, f: "Brilliant pharmacology. Ketamine provides dissociation AND bronchodilation. Tube is secured.", correct: true },
+          { t: "Etomidate", s: 50, f: "Standard choice, but misses the extra bronchodilatory benefit of Ketamine.", correct: false },
+          { t: "Fentanyl", s: -200, f: "Causes chest wall rigidity at high induction doses. You just made ventilating her impossible.", correct: false }
+        ]
+      }
+    ]
+  },
+  {
+    name: "Acute Ischemic Stroke",
+    intro: "A 70-year-old male is brought in by his wife. He developed right-sided weakness and aphasia exactly 90 minutes ago.",
+    steps: [
+      {
+        q: "What is your FIRST diagnostic test?",
+        choices: [
+          { t: "MRI of the Brain", s: -100, f: "Takes too long and the metal screening wastes precious time. Time is brain!", correct: false },
+          { t: "CT Head Without Contrast", s: 150, f: "Spot on. You MUST rule out a hemorrhagic bleed before you can even think about clot busters.", correct: true },
+          { t: "12-Lead EKG", s: -50, f: "Good to check for A-Fib, but not the priority over brain imaging.", correct: false },
+          { t: "Check a blood sugar", s: 50, f: "Hypoglycemia can mimic a stroke, good thought, but the CT scanner is the main goal.", correct: false }
+        ]
+      },
+      {
+        q: "The CT is negative for blood. Blood sugar is 110. You want to give tPA (Alteplase). His blood pressure is 210/115. Can you give it?",
+        choices: [
+          { t: "Yes, hypertension is normal in a stroke.", s: -400, f: "You gave tPA with a BP that high. He just massively bled into his brain and died.", correct: false },
+          { t: "No, push Labetalol to lower BP below 185/110 first.", s: 150, f: "Correct. Strict BP control is required before thrombolytics. You safely push the drug. He regains his speech.", correct: true },
+          { t: "No, give him Aspirin instead.", s: -100, f: "Aspirin is good, but you are well within the 4.5 hour tPA window. You denied him the best chance at recovery.", correct: false },
+          { t: "Yes, but give half the dose.", s: -200, f: "That's not how pharmacology works. You made up a protocol and got fired.", correct: false }
+        ]
+      }
+    ]
+  },
+  {
+    name: "Digoxin Toxicity",
+    intro: "An 82-year-old woman complains of severe nausea, vomiting, and seeing 'yellow halos' around the lights. Monitor shows severe bradycardia (HR 35) with frequent PVCs.",
+    steps: [
+      {
+        q: "She takes Digoxin for heart failure. You suspect toxicity. What electrolyte abnormality EXACERBATES Digoxin toxicity?",
+        choices: [
+          { t: "Hypernatremia", s: -50, f: "Incorrect mechanism.", correct: false },
+          { t: "Hyperkalemia", s: -50, f: "Digoxin toxicity CAUSES hyperkalemia, but hypokalemia is what makes the toxicity worse initially.", correct: false },
+          { t: "Hypokalemia", s: 150, f: "Correct. Low potassium allows Digoxin to bind more heavily to the Na+/K+ ATPase pump. Good physiology knowledge.", correct: true },
+          { t: "Hypercalcemia", s: -50, f: "Can cause arrhythmias, but not the classic exacerbator of Dig tox.", correct: false }
+        ]
+      },
+      {
+        q: "Her Potassium is 6.5 (severely high due to pump failure) and her HR drops to 20. She is unstable. What is the antidote?",
+        choices: [
+          { t: "Calcium Gluconate", s: -300, f: "Classic fatal error! Giving Calcium in Digoxin toxicity causes 'stone heart' - irreversible myocardial contraction. She dies.", correct: false },
+          { t: "Digoxin Immune Fab (Digibind)", s: 150, f: "Perfect. The specific antidote binds the free drug. Heart rate improves.", correct: true },
+          { t: "Atropine", s: 50, f: "Might buy you a minute or two, but doesn't fix the underlying poisoning.", correct: false },
+          { t: "Insulin and Glucose", s: -100, f: "Fixes the potassium, but doesn't fix the poisoned heart muscle. Too slow.", correct: false }
+        ]
+      }
+    ]
+  },
+  {
+    name: "Massive Hemorrhage",
+    intro: "A hunter accidentally shot himself in the femoral artery. He is pale, diaphoretic, and confused. HR 140, BP 60/30. A makeshift tourniquet is failing.",
+    steps: [
+      {
+        q: "Blood is pouring onto the floor. What is your first action?",
+        choices: [
+          { t: "Start two large bore IVs and pump 2 Liters of Normal Saline", s: -200, f: "You just popped all his remaining clots, diluted his clotting factors, and made him hypothermic. He bleeds out.", correct: false },
+          { t: "Apply a proper combat tourniquet high and tight", s: 150, f: "Stop the bleed first! The arterial spurting stops. Well done.", correct: true },
+          { t: "Administer TXA (Tranexamic Acid)", s: 50, f: "Good drug, but you have to stop the mechanical bleeding first.", correct: false },
+          { t: "Call the Chaplain", s: -100, f: "Defeatist attitude. The attending slaps you.", correct: false }
+        ]
+      },
+      {
+        q: "Bleeding is controlled, but he has lost half his blood volume. How do you resuscitate him?",
+        choices: [
+          { t: "More Normal Saline", s: -200, f: "Saline doesn't carry oxygen. You filled him with saltwater while his organs died of hypoxia.", correct: false },
+          { t: "O-Negative Blood (Massive Transfusion Protocol)", s: 150, f: "Correct. 1:1:1 ratio of PRBCs, Plasma, and Platelets. You kept him alive for surgery.", correct: true },
+          { t: "Epinephrine infusion", s: -300, f: "You clamped down his empty vessels. The pump runs dry and his heart stops.", correct: false },
+          { t: "Oral hydration", s: -500, f: "You offered him a glass of water while he's in class IV hemorrhagic shock. Are you insane?", correct: false }
+        ]
+      }
+    ]
+  },
+{
+    name: "Exertional Heat Stroke",
+    intro: "A 24-year-old hiker is brought in by search and rescue after collapsing on a desert trail in July. He is comatose. Skin is hot and bone-dry. Core temp is 106.8°F (41.5°C).",
+    steps: [
+      {
+        q: "His brain is literally cooking. What is your immediate, absolute first priority?",
+        choices: [
+          { t: "Administer 1000mg IV Acetaminophen", s: -200, f: "Tylenol resets the hypothalamic set-point. It does absolutely NOTHING for environmental heat overload. His liver is now angry AND cooking.", correct: false },
+          { t: "Initiate rapid evaporative cooling (mist and fans)", s: 150, f: "Correct. Strip him, spray him with lukewarm water, and blast the fans. You have to drop that core temp before his brain melts.", correct: true },
+          { t: "Pack him completely in ice", s: -100, f: "Ice packing causes severe peripheral vasoconstriction, trapping the heat in his core where the vital organs are. Rookie mistake.", correct: false },
+          { t: "Push IV Dantrolene", s: -150, f: "That's for Malignant Hyperthermia from anesthesia, not a sweaty hiker. Read your pharmacology textbook.", correct: false }
+        ]
+      },
+      {
+        q: "As his temperature drops to 103°F, he begins shivering violently. What is your next move?",
+        choices: [
+          { t: "Turn off the fans and get warm blankets", s: -300, f: "You just undid all your hard work. His temp shoots back to 106°F and he seizes.", correct: false },
+          { t: "Administer IV Lorazepam (Ativan)", s: 150, f: "Textbook. Shivering generates massive amounts of body heat. You knocked out the shivering reflex to let the cooling continue.", correct: true },
+          { t: "Physical restraints", s: -100, f: "Struggling against restraints generates even more heat. Are you actively trying to kill him?", correct: false },
+          { t: "Give IV Epinephrine", s: -500, f: "Why? Seriously, why? You just induced a massive sympathetic response. He's dead.", correct: false }
+        ]
+      }
+    ]
+  },
+  {
+    name: "Organophosphate Poisoning",
+    intro: "A 55-year-old local crop duster is carried in by his coworkers. He is covered in pesticide, vomiting, heavily drooling, incontinent of urine and feces, and crying continuously.",
+    steps: [
+      {
+        q: "He is exhibiting severe cholinergic toxicity (SLUDGE syndrome). His heart rate is 40. What is the primary antidote?",
+        choices: [
+          { t: "Physostigmine", s: -400, f: "Physostigmine INCREASES acetylcholine. You just pushed him into a terminal cholinergic crisis. Time of death called.", correct: false },
+          { t: "Atropine (large and repeated doses)", s: 150, f: "Correct. You push vial after vial of Atropine to dry up his secretions before he drowns in his own lung fluids.", correct: true },
+          { t: "Naloxone (Narcan)", s: -50, f: "He's poisoned by bug spray, not heroin. You wasted precious time.", correct: false },
+          { t: "Gastric lavage (stomach pumping)", s: -200, f: "He aspirated his stomach contents while you were shoving a tube down his throat because you didn't dry up his secretions first.", correct: false }
+        ]
+      },
+      {
+        q: "The Atropine dries up his secretions and fixes the bradycardia. However, he is now exhibiting severe muscle fasciculations and weakness. What reverses the nicotinic receptor paralysis?",
+        choices: [
+          { t: "More Atropine", s: -100, f: "Atropine only works on muscarinic receptors, not nicotinic. His diaphragm paralyzes and he stops breathing.", correct: false },
+          { t: "Pralidoxime (2-PAM)", s: 150, f: "Excellent. 2-PAM breaks the bond between the organophosphate and the acetylcholinesterase enzyme. Muscle function returns.", correct: true },
+          { t: "Succinylcholine", s: -500, f: "You gave a depolarizing paralytic to a patient already paralyzed by a depolarizing agent. The attending banishes you from the ER.", correct: false },
+          { t: "Epinephrine", s: -100, f: "Doesn't reverse the enzyme blockade.", correct: false }
+        ]
+      }
+    ]
+  },
+  {
+    name: "Ruptured Ectopic Pregnancy",
+    intro: "A 28-year-old female presents with sudden, sharp, tearing pain in her lower right quadrant. She had a syncopal (fainting) episode in the lobby. BP is 80/40, HR 135.",
+    steps: [
+      {
+        q: "She is in shock. What is the absolute FIRST diagnostic test you must run?",
+        choices: [
+          { t: "CT Scan of the Abdomen/Pelvis", s: -200, f: "She bleeds out in the CT scanner while you wait for the contrast dye to arrive. Never send an unstable patient to CT.", correct: false },
+          { t: "Urine Pregnancy Test (UPT)", s: 150, f: "Rule #1 of the ER: Any female of childbearing age with abdominal pain gets a pregnancy test. It's positive.", correct: true },
+          { t: "12-Lead EKG", s: -50, f: "Her heart is fast because she has no blood left, not because she's having an MI.", correct: false },
+          { t: "Prepare for Appendectomy", s: -300, f: "You sent her to the OR for an appendix, but the surgeon finds her fallopian tube exploded. You look like a fool.", correct: false }
+        ]
+      },
+      {
+        q: "The pregnancy test is positive. She is hypotensive and rigid on exam. What is your immediate intervention?",
+        choices: [
+          { t: "Administer Methotrexate IM", s: -200, f: "Methotrexate is for stable, unruptured ectopics. Her tube is already blown. She bleeds to death.", correct: false },
+          { t: "Bedside FAST Ultrasound and STAT OB/GYN consult", s: 150, f: "Correct. Ultrasound shows a belly full of free fluid (blood). You wheel her directly to the OR. Life saved.", correct: true },
+          { t: "Discharge with anti-nausea meds", s: -1000, f: "You just discharged a woman bleeding internally to death. The medical board is already writing your suspension letter.", correct: false },
+          { t: "Give IV Antibiotics for PID", s: -150, f: "You misdiagnosed pelvic inflammatory disease. The antibiotics don't stop the arterial bleeding.", correct: false }
+        ]
+      }
+    ]
+  },
+  {
+    name: "Massive Pulmonary Embolism",
+    intro: "A 45-year-old male recently discharged after knee surgery comes in gasping for air. He complains of sharp pain when he breathes. HR 120, O2 sat 85%, BP 85/50.",
+    steps: [
+      {
+        q: "He is hypoxic and hypotensive with a recent surgery history. You suspect a massive PE. What test confirms right heart strain instantly at the bedside?",
+        choices: [
+          { t: "D-Dimer blood test", s: -100, f: "D-Dimer takes an hour to result and is useless in a patient this sick. You wasted time.", correct: false },
+          { t: "Bedside Echocardiogram", s: 150, f: "Brilliant. You see a massively dilated right ventricle struggling to push against the lung clot. Diagnosis confirmed.", correct: true },
+          { t: "Chest X-Ray", s: -50, f: "Chest X-rays are typically normal in PE. It doesn't help you prove it right now.", correct: false },
+          { t: "V/Q Scan", s: -150, f: "Good test, but takes hours in Nuclear Medicine. He doesn't have hours.", correct: false }
+        ]
+      },
+      {
+        q: "The echo shows severe right ventricular failure due to the clot. His BP is dropping to 70/40. What is the definitive treatment?",
+        choices: [
+          { t: "IV Heparin drip", s: -100, f: "Heparin stops NEW clots, but does nothing to break up the massive clot already choking his heart. He codes.", correct: false },
+          { t: "Systemic Thrombolytics (tPA)", s: 150, f: "High risk, high reward. You push the 'clot buster'. The clot dissolves, his BP stabilizes, and he can breathe again.", correct: true },
+          { t: "Aspirin and Plavix", s: -200, f: "Antiplatelets are completely insufficient for an obstructive shock PE. Fatal error.", correct: false },
+          { t: "Albuterol nebulizer", s: -50, f: "This is a perfusion problem, not a ventilation problem. His bronchioles are fine.", correct: false }
+        ]
+      }
+    ]
+  },
+  {
+    name: "Tricyclic Antidepressant (TCA) Overdose",
+    intro: "A 30-year-old is brought in seizing. Her roommate found an empty bottle of Amitriptyline. EKG shows a widened QRS complex of 160ms and a prominent R wave in aVR.",
+    steps: [
+      {
+        q: "The widened QRS means her heart is about to go into lethal ventricular tachycardia. What is the specific antidote for TCA cardiac toxicity?",
+        choices: [
+          { t: "Amiodarone IV", s: -300, f: "Amiodarone widens the QT interval! You threw her straight into Torsades de Pointes. Good job.", correct: false },
+          { t: "Sodium Bicarbonate IV pushes", s: 150, f: "Correct! The sodium load overcomes the sodium channel blockade caused by the TCA, and the alkalinity helps unbind the drug. QRS narrows.", correct: true },
+          { t: "Flumazenil", s: -100, f: "That's for benzos, and it causes seizures. She is already seizing. Terrible idea.", correct: false },
+          { t: "Calcium Gluconate", s: -50, f: "Good for hyperkalemia, but does nothing for the specific sodium-channel blockade of a TCA.", correct: false }
+        ]
+      },
+      {
+        q: "The QRS narrows, but she is still having active, continuous tonic-clonic seizures. How do you stop them?",
+        choices: [
+          { t: "Phenytoin (Dilantin)", s: -200, f: "Phenytoin is a sodium channel blocker! You just poisoned her heart again. She goes into V-Fib.", correct: false },
+          { t: "Benzodiazepines (Lorazepam/Diazepam)", s: 150, f: "Yes. Benzos are the safest and most effective first-line agent for toxicologic seizures. She stops seizing.", correct: true },
+          { t: "Propofol", s: 50, f: "It works to stop seizures, but drops her blood pressure dangerously low. Not the first choice.", correct: false },
+          { t: "Wait it out", s: -300, f: "Her brain fries from status epilepticus. Permanent vegetative state.", correct: false }
+        ]
+      }
+    ]
+  },
+  {
+    name: "Subarachnoid Hemorrhage",
+    intro: "A 50-year-old man clutches his head and screams, 'This is the worst headache of my entire life!' He is photophobic and his neck is stiff. BP is 220/120.",
+    steps: [
+      {
+        q: "You suspect a ruptured cerebral aneurysm. What is the first step in diagnosis?",
+        choices: [
+          { t: "Lumbar Puncture (Spinal Tap)", s: -300, f: "You stuck a needle in his spine without checking for increased intracranial pressure first. His brain herniates. He dies instantly.", correct: false },
+          { t: "Non-contrast CT of the Head", s: 150, f: "Always the first step. You immediately see the classic 'star pattern' of blood in the basal cisterns.", correct: true },
+          { t: "MRI of the Brain", s: -100, f: "Too slow. CT is much faster and highly sensitive for acute blood.", correct: false },
+          { t: "Give him Ibuprofen and dim the lights", s: -500, f: "You gave a blood-thinner to a man bleeding into his brain. Truly, a mastermind at work.", correct: false }
+        ]
+      },
+      {
+        q: "CT confirms a subarachnoid hemorrhage. His BP is still 220/120, which is actively pushing more blood out of the ruptured aneurysm. How do you manage this?",
+        choices: [
+          { t: "Nitroprusside IV drip", s: -200, f: "Nitroprusside causes cerebral vasodilation, massively increasing intracranial pressure. His brain swells horribly.", correct: false },
+          { t: "Titrate IV Nicardipine or Labetalol", s: 150, f: "Perfect. You safely and smoothly lower his systolic BP to around 140 to stop the bleeding while maintaining brain perfusion.", correct: true },
+          { t: "Slam his pressure down to 90/60 immediately", s: -150, f: "You dropped it too low. The brain loses perfusion and he suffers a massive ischemic stroke on top of the bleed.", correct: false },
+          { t: "Leave the BP alone, it's a compensatory mechanism", s: -100, f: "That's true for ischemic strokes, but deadly for hemorrhagic ones. He bleeds out into his skull.", correct: false }
+        ]
+      }
+    ]
+  },
+  {
+    name: "Thyroid Storm",
+    intro: "A 32-year-old female with Graves' disease presents highly agitated, confused, and sweating profusely. Temperature is 105°F, Heart Rate is 170 (A-Fib), BP 180/100.",
+    steps: [
+      {
+        q: "She is in Thyroid Storm, a hypermetabolic crisis. What medication class must you give FIRST to block the massive sympathetic overdrive?",
+        choices: [
+          { t: "Aspirin", s: -200, f: "Aspirin displaces thyroid hormone from binding proteins, making the storm dramatically worse. Fatal mistake.", correct: false },
+          { t: "Propranolol (Beta-Blocker)", s: 150, f: "Crucial first step. Propranolol blocks the sympathetic surge and also blocks the peripheral conversion of T4 to T3.", correct: true },
+          { t: "Iodine (Lugol's Solution)", s: -150, f: "If you give Iodine before blocking hormone synthesis, the thyroid uses it to make MORE hormone. The storm worsens.", correct: false },
+          { t: "Propylthiouracil (PTU)", s: 50, f: "You need this, but if you don't block the heart rate with beta-blockers first, she will die of high-output heart failure.", correct: false }
+        ]
+      },
+      {
+        q: "Heart rate is controlled with Propranolol. You've given PTU to stop new hormone synthesis. Now you want to stop the release of already-stored thyroid hormone. What now?",
+        choices: [
+          { t: "Radioactive Iodine Ablation", s: -100, f: "That's an outpatient procedure, not an ER resuscitation drug.", correct: false },
+          { t: "Potassium Iodide (SSKI / Lugol's)", s: 150, f: "Correct. Given 1 hour AFTER PTU, the Wolff-Chaikoff effect takes over and shuts down thyroid hormone release.", correct: true },
+          { t: "Levothyroxine", s: -500, f: "You just gave her SYNTHETIC THYROID HORMONE during a thyroid storm. The attending physically escorts you out of the hospital.", correct: false },
+          { t: "Hydrocortisone", s: 50, f: "Good to give for adrenal support, but doesn't stop the hormone release from the gland.", correct: false }
+        ]
+      }
+    ]
+  },
+  {
+    name: "Acetaminophen (Tylenol) Toxicity",
+    intro: "A 16-year-old admits to swallowing 'a handful' of Tylenol pills exactly 4 hours ago after a breakup. She currently feels completely fine, just a little nauseous.",
+    steps: [
+      {
+        q: "She is asymptomatic. Does she need treatment?",
+        choices: [
+          { t: "No, discharge to psychiatry.", s: -400, f: "Phase 1 of Tylenol poisoning is asymptomatic. In 3 days her liver will fail completely and she will die because of you.", correct: false },
+          { t: "Yes, order a 4-hour Acetaminophen level and plot it on the Rumack-Matthew nomogram.", s: 150, f: "Textbook. Toxicity is strictly based on the time of ingestion and serum level. You wait for the lab.", correct: true },
+          { t: "Pump her stomach immediately.", s: -100, f: "Pills dissolve within 1-2 hours. Pumping a stomach at 4 hours is useless and dangerous.", correct: false },
+          { t: "Give IV activated charcoal.", s: -50, f: "Charcoal is oral, not IV! You just injected coal into her veins. Lethal mistake.", correct: false }
+        ]
+      },
+      {
+        q: "The lab results return. Her level is way above the treatment line on the nomogram. What is the specific antidote?",
+        choices: [
+          { t: "Flumazenil", s: -100, f: "Wrong drug class entirely.", correct: false },
+          { t: "N-acetylcysteine (NAC)", s: 150, f: "Perfect. NAC replenishes glutathione, which allows the liver to safely metabolize the toxic NAPQI byproduct. Her liver is saved.", correct: true },
+          { t: "Sodium Bicarbonate", s: -50, f: "Doesn't help Tylenol metabolism.", correct: false },
+          { t: "Immediate Liver Transplant", s: -200, f: "You tried to order a liver transplant for someone who just needs an IV bag of an antidote. Surgeons laugh at you.", correct: false }
+        ]
+      }
+    ]
+  },
+  {
+    name: "Cardiac Tamponade",
+    intro: "A 25-year-old was stabbed in the left chest. He has distended jugular veins (JVD), heavily muffled heart sounds, and his blood pressure is 70/40. (Beck's Triad)",
+    steps: [
+      {
+        q: "Blood is filling the pericardial sac, squeezing his heart so it can't fill. His BP is tanking. What is the quickest diagnostic confirmation?",
+        choices: [
+          { t: "12-Lead EKG", s: 50, f: "You might see electrical alternans, but an EKG won't definitively show the fluid. You need an image.", correct: false },
+          { t: "Bedside FAST Ultrasound", s: 150, f: "Correct. The ultrasound probe hits his chest and you immediately see a massive black ring of fluid crushing the right ventricle.", correct: true },
+          { t: "CT Chest", s: -200, f: "He codes in the CT scanner. Unstable trauma patients never go to CT.", correct: false },
+          { t: "Diagnostic Peritoneal Lavage (DPL)", s: -100, f: "He was stabbed in the chest, why are you cutting open his abdomen?", correct: false }
+        ]
+      },
+      {
+        q: "You confirmed the tamponade. The cardiothoracic surgeon is 20 minutes away. He is losing his pulse. What life-saving procedure must you perform NOW?",
+        choices: [
+          { t: "Pericardiocentesis", s: 150, f: "You insert a long needle below the xiphoid process and aspirate 50cc of dark blood. The heart suddenly expands. BP jumps to 110/70.", correct: true },
+          { t: "Needle Decompression", s: -150, f: "That's for the lungs (pneumothorax). You put a needle in his lung space, missing the heart sac entirely. He dies.", correct: false },
+          { t: "Give IV Furosemide (Lasix)", s: -300, f: "Diuretics lower preload. A tamponade relies heavily on high preload to keep the heart open. You just stopped his heart.", correct: false },
+          { t: "Start CPR", s: -100, f: "CPR cannot compress a heart that is shielded by a pressurized sac of fluid. It's totally ineffective.", correct: false }
+        ]
+      }
+    ]
+  },
+  {
+    name: "Severe Hyperkalemia",
+    intro: "A 65-year-old ESRD (End-Stage Renal Disease) patient missed his dialysis 3 times this week. He complains of extreme muscle weakness. Monitor shows wildly bizarre, wide, sine-wave patterns.",
+    steps: [
+      {
+        q: "His potassium is critically high, and his heart is about to stop. What is the VERY FIRST medication you must push to stabilize the cardiac membrane?",
+        choices: [
+          { t: "Insulin and Dextrose", s: -100, f: "Insulin shifts potassium, but it takes 15-30 minutes. He will go into V-Fib in the next 60 seconds.", correct: false },
+          { t: "IV Calcium Gluconate (or Calcium Chloride)", s: 150, f: "Crucial! Calcium directly antagonizes the effects of potassium on the cardiac cell membrane, preventing lethal arrhythmias. The EKG narrows.", correct: true },
+          { t: "Kayexalate", s: -200, f: "Takes hours to days to work in the gut. He's dead.", correct: false },
+          { t: "Sodium Bicarbonate", s: -50, f: "Helps shift K+ a little, but doesn't instantly protect the heart like Calcium.", correct: false }
+        ]
+      },
+      {
+        q: "The cardiac membrane is stabilized, but his serum potassium is still 8.2 mEq/L. How do you quickly shift the potassium out of the blood and into the cells?",
+        choices: [
+          { t: "Regular Insulin IV with 50% Dextrose (D50)", s: 150, f: "Correct. Insulin activates the Na+/K+ pump, driving potassium rapidly into the cells. D50 prevents him from dropping his blood sugar to zero.", correct: true },
+          { t: "Furosemide (Lasix)", s: -100, f: "His kidneys are already totally dead (ESRD). Diuretics will literally do nothing.", correct: false },
+          { t: "Start Dialysis", s: 100, f: "This is the ultimate fix, but setting up the machine takes time. You need to bridge him with meds first.", correct: false },
+          { t: "Give Potassium Chloride", s: -1000, f: "You just intravenously injected the lethal injection sequence. He flatlines instantly.", correct: false }
+        ]
+      }
+    ]
+  }
 
 
     // ---------------------------------------------------------
@@ -11215,23 +11704,189 @@ const DISEASE_DB = [
 // ... (The rest of the JS logic remains exactly the same) ...
 
 const MED_STUDENT_EVENTS = [
-    {
-        q: "MED STUDENT: 'What's the classic EKG finding for a Pulmonary Embolism?'",
-        choices: [
-            { t: "S1Q3T3", correct: true, f: "Correct. I'll go back to my notes." },
-            { t: "ST Elevation", correct: false, f: "Wrong. I'm telling the Attending you're slipping." },
-            { t: "Osborn Waves", correct: false, f: "That's Hypothermia. Maybe you need some coffee." },
-            { t: "U-Waves", correct: false, f: "That's Hypokalemia. Wow, even I knew that." }
-        ]
-    },
-    {
-        q: "MED STUDENT: 'Quick! What is the Triad for Normal Pressure Hydrocephalus?'",
-        choices: [
-            { t: "Wet, Wacky, and Wobbly", correct: true, f: "Nice. Incontinence, Dementia, and Ataxia. You're a pro." },
-            { t: "Fever, Stiff Neck, Headache", correct: false, f: "That's Meningitis. Get it together, Doc." },
-            { t: "Pain, Pallor, Pulselessness", correct: false, f: "Those are the Ps of ischemia. Focus!" }
-        ]
-    }
+  // --- GUNNER GREG EVENTS ---
+  {
+    q: "Gunner Greg, the most annoying student in your cohort, corners you by the telemetry monitors. He points at a normal sinus rhythm.\n\n'Let's see if you actually belong here,' he whispers. 'What exactly does the T-wave represent on this EKG, genius?'",
+    choices: [
+      { t: "Ventricular repolarization", s: 150, f: "Correct. Greg rolls his eyes and mutters something about it being 'too easy.' You assert dominance.", correct: true },
+      { t: "Atrial depolarization", s: -100, f: "Greg laughs out loud. 'That's the P-wave, you absolute clown!' The nurses giggle. You lose massive street credibility.", correct: false },
+      { t: "Ventricular depolarization", s: -100, f: "Wrong. That's the QRS complex. Greg makes a big show of explaining it to you while patting your shoulder.", correct: false },
+      { t: "Purkinje fiber firing", s: -50, f: "You tried to sound too advanced and missed the basic physiology. Greg smiles smugly.", correct: false }
+    ]
+  },
+  {
+    q: "You just drew an Arterial Blood Gas (ABG) on a patient having a panic attack who is breathing 35 times a minute. Greg intercepts the printout.\n\n'Hey hotshot,' Greg says. 'The patient is hyperventilating. Without looking at this paper, what is happening to their blood pH and why?'",
+    choices: [
+      { t: "Respiratory alkalosis because they are blowing off CO2", s: 150, f: "Nailed it. Carbon dioxide is an acid. Blowing it out raises the pH. You snatch the paper from his hand.", correct: true },
+      { t: "Respiratory acidosis because they need more oxygen", s: -100, f: "'Wow,' Greg says, shaking his head. 'You just failed A&P 102. They are getting rid of acid, not retaining it.'", correct: false },
+      { t: "Metabolic alkalosis because of kidney compensation", s: -50, f: "Kidneys take days to compensate. This is an acute respiratory issue. Greg writes 'Needs Help' on your notepad.", correct: false },
+      { t: "Metabolic acidosis from lactic acid build up", s: -50, f: "They are having a panic attack, not running a marathon. Greg tells the attending you need to review acid-base balance.", correct: false }
+    ]
+  },
+  {
+    q: "You sit down in the breakroom to eat a stale cracker. Greg slides into the chair next to you, opening a massive microbiology textbook.\n\n'Pop quiz on adaptive immunity,' Greg sneers. 'Explain clonal selection in B-cells. What actually triggers a specific B-cell to multiply?'",
+    choices: [
+      { t: "Binding of a specific antigen to its matching B-cell receptor", s: 150, f: "Boom. Textbook answer. The specific antigen selects the specific lymphocyte. Greg closes his book and walks away in disgust.", correct: true },
+      { t: "Phagocytosis of bacteria by macrophages", s: -50, f: "That's non-specific innate immunity, not clonal selection. Greg sighs loudly.", correct: false },
+      { t: "Non-specific activation by cytokines circulating in the blood", s: -100, f: "'Wrong. It has to be antigen-specific, dummy,' Greg says, stealing your cracker.", correct: false },
+      { t: "T-cell apoptosis", s: -50, f: "That means the T-cells are dying. You just mashed medical words together. Greg is unimpressed.", correct: false }
+    ]
+  },
+  {
+    q: "A patient comes in covered in a brutal poison ivy rash. Greg leans against the doorframe, trying to look like a young Dr. House.\n\n'Since you clearly skipped the hypersensitivities lecture,' Greg challenges, 'what type of hypersensitivity reaction is poison ivy, and what cell mediates it?'",
+    choices: [
+      { t: "Type I, mediated by IgE", s: -100, f: "Wrong. That's anaphylaxis and allergies. Greg shakes his head. 'Are you going to give them an EpiPen for poison ivy?'", correct: false },
+      { t: "Type II, mediated by IgG", s: -50, f: "That's cytotoxic, like a mismatched blood transfusion. Greg looks at you with pity.", correct: false },
+      { t: "Type III, mediated by Immune Complexes", s: -50, f: "Nope, that's lupus or rheumatoid arthritis. You are failing Micro 101.", correct: false },
+      { t: "Type IV, mediated by T-cells", s: 150, f: "Correct! It's a delayed-type hypersensitivity. T-cells take a few days to cause the reaction. Greg crosses his arms and pouts.", correct: true }
+    ]
+  },
+  {
+    q: "You are preparing a patient for a blood pressure medication drip. Greg intercepts the IV bag.\n\n'If you're going to alter their vascular resistance,' Greg asks smugly, 'which specific blood vessels are the primary site of systemic vascular resistance in the body?'",
+    choices: [
+      { t: "The Aorta", s: -50, f: "The aorta is an elastic artery, it just stretches. It doesn't control resistance. Greg laughs.", correct: false },
+      { t: "The Arterioles", s: 150, f: "Correct! The smooth muscle in the arterioles dictates the resistance and blood pressure. You take the IV bag back.", correct: true },
+      { t: "The Capillaries", s: -100, f: "Capillaries are one cell thick for gas exchange, they have no muscle to constrict! Greg calls you a hazard.", correct: false },
+      { t: "The Vena Cava", s: -50, f: "Veins are capacitance vessels (they store blood), not resistance vessels. Go back to A&P 102.", correct: false }
+    ]
+  },
+  {
+    q: "The attending mentions a viral replication cycle. Greg immediately turns to you to try and make you look stupid in front of the boss.\n\n'Speaking of replication,' Greg says loudly. 'During DNA replication, which enzyme is responsible for actually unzipping the double helix?'",
+    choices: [
+      { t: "DNA Polymerase", s: -50, f: "Polymerase builds the new strand, it doesn't unzip the old one. The attending notices your hesitation.", correct: false },
+      { t: "Ligase", s: -50, f: "Ligase glues the Okazaki fragments together. Greg is smiling.", correct: false },
+      { t: "Helicase", s: 150, f: "Correct! Helicase unzips the genes. You lock eyes with the attending, who nods approvingly. Greg's face falls.", correct: true },
+      { t: "RNA Primase", s: -50, f: "Primase just lays down the starting block. You got out-nerded by Greg.", correct: false }
+    ]
+  },
+  {
+    q: "You are listening to a patient's chest with your stethoscope. Greg rips one of the earpieces out.\n\n'I hear a systolic murmur on the left side,' Greg says. 'Which valve prevents backflow of oxygenated blood from the left ventricle back into the left atrium?'",
+    choices: [
+      { t: "Tricuspid valve", s: -100, f: "That's on the right side of the heart. 'Tri it before you bi it,' Greg mocks you.", correct: false },
+      { t: "Aortic valve", s: -50, f: "The aortic valve stops backflow from the aorta, not the atrium. Try again.", correct: false },
+      { t: "Mitral (Bicuspid) valve", s: 150, f: "Spot on. Left atrium to left ventricle. You shove your earpiece back in and tell Greg to get lost.", correct: true },
+      { t: "Pulmonary valve", s: -100, f: "Wrong side, wrong chamber, wrong blood type. Utter failure.", correct: false }
+    ]
+  },
+  {
+    q: "A lab tech drops off a culture report showing 'Gram-positive cocci in clusters.' Greg snatches the paper.\n\n'Microbiology 101,' Greg challenges. 'What specific cellular structure makes a Gram-positive bacterium stain purple?'",
+    choices: [
+      { t: "An outer lipopolysaccharide (LPS) membrane", s: -100, f: "That's Gram-negative! Greg writes 'FAIL' on the lab report and hands it to you.", correct: false },
+      { t: "A thick layer of peptidoglycan in the cell wall", s: 150, f: "Correct. The thick peptidoglycan traps the crystal violet dye. You quote the textbook word-for-word and Greg shuts up.", correct: true },
+      { t: "Mycolic acid in the capsule", s: -50, f: "That's acid-fast bacteria like TB. You overthought it.", correct: false },
+      { t: "A lack of a true nucleus", s: -50, f: "All bacteria lack a nucleus, that has nothing to do with the Gram stain. Greg sighs.", correct: false }
+    ]
+  },
+  {
+    q: "You are doing a neurological exam. The patient's heart rate drops. Greg materializes out of thin air.\n\n'Oh, bradycardia?' Greg asks. 'Which cranial nerve is responsible for the parasympathetic control that slows down the heart?'",
+    choices: [
+      { t: "Trigeminal Nerve (CN V)", s: -50, f: "That's facial sensation and chewing. Greg pretends to chew on a pen to mock you.", correct: false },
+      { t: "Facial Nerve (CN VII)", s: -50, f: "That moves the face. It doesn't touch the heart.", correct: false },
+      { t: "Glossopharyngeal Nerve (CN IX)", s: -50, f: "Good for swallowing and gagging, which is what you are doing right now under pressure.", correct: false },
+      { t: "Vagus Nerve (CN X)", s: 150, f: "Correct! The wanderer nerve. It provides parasympathetic brake to the SA node. Greg storms off.", correct: true }
+    ]
+  },
+  {
+    q: "You just ordered Penicillin for a strep throat patient. Greg looks at the computer screen over your shoulder.\n\n'Anyone can click a button,' Greg sneers. 'But how do beta-lactam antibiotics like Penicillin actually kill the bacteria?'",
+    choices: [
+      { t: "They stop protein synthesis at the ribosome", s: -50, f: "That's macrolides or tetracyclines. Greg shakes his head. 'You're basically practicing voodoo.'", correct: false },
+      { t: "They inhibit cell wall synthesis", s: 150, f: "Exactly. They bind to penicillin-binding proteins and stop the peptidoglycan cross-linking. The bacteria pop. You own Greg.", correct: true },
+      { t: "They destroy the bacterial DNA", s: -50, f: "That's fluoroquinolones. You missed the mechanism.", correct: false },
+      { t: "They punch holes in the plasma membrane", s: -50, f: "Nope. You are relying on pure guesswork. Greg reports your lack of pharmacological knowledge to the attending.", correct: false }
+    ]
+  },
+
+  // --- FLASHCARD FIONA EVENTS ---
+  {
+    q: "Flashcard Fiona intercepts you in the hallway, aggressively swiping right on her Anki cards on her iPad. 'Patient in Room 3 has muscle cramps. Basic physiology check.'\n\n'To initiate muscle contraction, what specific ion must bind to troponin in order to move tropomyosin and expose the binding sites on actin?'",
+    choices: [
+      { t: "Calcium", s: 150, f: "Correct. You answer before she can even tap her screen. 'Whatever, that was a low-yield card anyway,' she mutters.", correct: true },
+      { t: "Potassium", s: -50, f: "'Wrong. Potassium is for repolarization. Did you sleep through A&P?' Fiona marks the card as 'Again' for you.", correct: false },
+      { t: "Sodium", s: -50, f: "Fiona sighs heavily. 'Sodium starts the action potential, but it doesn't bind to troponin. Go read a book.'", correct: false },
+      { t: "Magnesium", s: -50, f: "Fiona laughs. 'Magnesium actually relaxes muscle. You just failed basic biology.'", correct: false }
+    ]
+  },
+  {
+    q: "A patient just had a minor seizure. Fiona is standing outside the room, furiously tapping her Apple Pencil against her clipboard.\n\n'Neurology block,' she announces. 'During the rapid depolarization phase of a neuronal action potential, which ion is rushing INTO the cell down its concentration gradient?'",
+    choices: [
+      { t: "Potassium", s: -100, f: "Fiona literally facepalms. 'Potassium rushes OUT during repolarization. You just ran the neuron backward.'", correct: false },
+      { t: "Calcium", s: -50, f: "'Maybe in cardiac nodal cells, but not standard neurons,' she says smugly. 'Nice try though.'", correct: false },
+      { t: "Sodium", s: 150, f: "Nailed it. Sodium rushes in, voltage goes positive. Fiona glares at you. 'You probably just guessed,' she whispers.", correct: true },
+      { t: "Chloride", s: -50, f: "Chloride is inhibitory. Fiona writes down your answer to tell the attending how incompetent you are.", correct: false }
+    ]
+  },
+  {
+    q: "You are adjusting a patient's blood pressure meds. Fiona slides up next to you like a shadow. 'Pharmacology is just applied physiology,' she quotes.\n\n'If we are giving an ACE inhibitor to stop Aldosterone, what is Aldosterone's exact mechanism in the distal tubule of the kidney?'",
+    choices: [
+      { t: "It increases sodium reabsorption and potassium excretion", s: 150, f: "Correct. Water follows sodium, raising blood pressure. You explain it flawlessly. Fiona scowls and stalks off to find a nurse to bother.", correct: true },
+      { t: "It increases potassium reabsorption", s: -100, f: "Fiona smiles a wicked smile. 'It does the exact opposite. You'd kill this patient with hyperkalemia.'", correct: false },
+      { t: "It dilates the afferent arteriole", s: -50, f: "That's prostaglandins, not Aldosterone. Fiona shakes her head. 'I'm embarrassed for you.'", correct: false },
+      { t: "It blocks ADH (Antidiuretic Hormone)", s: -50, f: "Different hormone, different mechanism. Fiona makes a 'buzzer' noise with her mouth.", correct: false }
+    ]
+  },
+  {
+    q: "You are doing a rotation in the NICU. A premature baby is struggling to breathe. Fiona acts like she invented the lungs.\n\n'Premies lack pulmonary surfactant,' she recites perfectly. 'What specific physical property does surfactant lower to prevent the alveoli from collapsing?'",
+    choices: [
+      { t: "Airway resistance", s: -50, f: "'Wrong. That's determined by the radius of the bronchioles, not the alveoli,' she snaps.", correct: false },
+      { t: "Partial pressure of oxygen", s: -50, f: "Fiona rolls her eyes. 'Why would you want to LOWER oxygen pressure? Think.'", correct: false },
+      { t: "Surface tension", s: 150, f: "Correct. It breaks up the hydrogen bonds of water in the alveoli. You steal her thunder. She angrily deletes a flashcard.", correct: true },
+      { t: "Vital capacity", s: -50, f: "That's a volume measurement. You are guessing, and Fiona knows it.", correct: false }
+    ]
+  },
+  {
+    q: "A patient with the flu is demanding a Z-Pak (antibiotics). You are trying to explain why it won't work, but Fiona cuts you off.\n\n'Let's see if the resident knows basic Micro 101,' she challenges. 'Unlike bacteria, why are viruses completely immune to antibiotics and classified as obligate intracellular parasites?'",
+    choices: [
+      { t: "They lack their own metabolic machinery and ribosomes", s: 150, f: "Spot on. They hijack the host cell, so there's no bacterial machinery for the antibiotic to target. Fiona is visibly annoyed by your competence.", correct: true },
+      { t: "They have a thick peptidoglycan wall", s: -100, f: "Fiona bursts out laughing. 'That's bacteria! Viruses have protein capsids. Oh my god.'", correct: false },
+      { t: "They are eukaryotes", s: -100, f: "'Viruses aren't even technically alive, let alone eukaryotes,' Fiona scoffs.", correct: false },
+      { t: "They secrete beta-lactamase", s: -50, f: "That's a bacterial resistance mechanism. You just made a fool of yourself in front of the patient.", correct: false }
+    ]
+  },
+  {
+    q: "You are discharging a new mother who is asking about the immune benefits of breastfeeding. Fiona seizes the opportunity to 'pimp' you in front of the patient.\n\n'Breast milk provides crucial passive immunity,' Fiona says. 'Which specific class of immunoglobulin is secreted heavily in breast milk?'",
+    choices: [
+      { t: "IgG", s: -50, f: "'IgG crosses the placenta during pregnancy, but it's not the primary one in milk,' Fiona corrects you loudly.", correct: false },
+      { t: "IgA", s: 150, f: "Correct! Secretory IgA coats the baby's GI tract. You smile at the mother. Fiona grumbles and crosses her arms.", correct: true },
+      { t: "IgM", s: -50, f: "Fiona shakes her head. 'IgM is the first responder in the blood, it's a massive pentamer. It doesn't cross into milk efficiently.'", correct: false },
+      { t: "IgE", s: -100, f: "'Ah yes, give the baby an allergic reaction. Brilliant,' Fiona says sarcastically.", correct: false }
+    ]
+  },
+  {
+    q: "A patient is admitted with severe Vitamin B12 deficiency anemia. Fiona is reviewing the chart and starts tapping her foot.\n\n'This is a GI problem, not a blood problem,' Fiona declares. 'Parietal cells secrete stomach acid, but what OTHER crucial glycoprotein do they secrete that is absolutely required to absorb Vitamin B12?'",
+    choices: [
+      { t: "Pepsinogen", s: -50, f: "Fiona smirks. 'Chief cells secrete pepsinogen. Try again, chief.'", correct: false },
+      { t: "Gastrin", s: -50, f: "That's G-cells in the antrum. You're in the wrong part of the stomach.", correct: false },
+      { t: "Secretin", s: -50, f: "Fiona sighs. 'That's from the duodenum. You really don't know your GI tract, do you?'", correct: false },
+      { t: "Intrinsic Factor", s: 150, f: "Perfect. No Intrinsic Factor means no B12 absorption in the terminal ileum. You shut down her pop quiz flawlessly.", correct: true }
+    ]
+  },
+  {
+    q: "You're writing a script for an oral antifungal for a patient with severe thrush. Fiona peers over your shoulder.\n\n'Let's check your Micro knowledge,' she says. 'Why can't we just give this guy Penicillin? What is fundamentally different about a fungal cell wall compared to a bacterial cell wall?'",
+    choices: [
+      { t: "Fungi have cell walls made of chitin and beta-glucan, not peptidoglycan", s: 150, f: "Correct. Penicillin targets peptidoglycan, which fungi simply don't have. Fiona clicks her tongue in annoyance and walks away.", correct: true },
+      { t: "Fungi don't have cell walls at all", s: -100, f: "Fiona stares at you. 'Human cells don't have cell walls. Fungi definitely do. Are you a doctor or a plumber?'", correct: false },
+      { t: "Fungi are prokaryotes", s: -50, f: "'Fungi are eukaryotes, they have a nucleus. You are failing basic biology,' she sneers.", correct: false },
+      { t: "Penicillin only kills viruses", s: -500, f: "Fiona's jaw drops. 'Did you just say Penicillin kills viruses? I am reporting you to the Medical Board immediately.'", correct: false }
+    ]
+  },
+  {
+    q: "A patient presents with scleral icterus (yellow eyes) and jaundice. Fiona is holding a printed lab report.\n\n'His bilirubin is sky-high,' Fiona says. 'But do you even know where bilirubin comes from? What is the primary biological source of bilirubin in the human body?'",
+    choices: [
+      { t: "Bile synthesized directly by the gallbladder", s: -50, f: "Fiona scoffs. 'The gallbladder just stores bile, the liver makes it. But that doesn't answer where the PIGMENT comes from.'", correct: false },
+      { t: "The breakdown of heme from senescent (old) red blood cells", s: 150, f: "Correct. Macrophages eat old RBCs and convert the heme into bilirubin. You drop the knowledge. Fiona looks disappointed.", correct: true },
+      { t: "Excess cholesterol converting in the liver", s: -50, f: "Cholesterol makes bile salts, not the yellow bilirubin pigment. Fiona marks you as incorrect.", correct: false },
+      { t: "Protein catabolism in the kidneys", s: -50, f: "That makes urea, not bilirubin. You are in the completely wrong organ system.", correct: false }
+    ]
+  },
+  {
+    q: "A patient is suspected of carbon monoxide poisoning, which halts cellular respiration. Fiona decides this is the perfect time for a deep-dive biology question.\n\n'Carbon monoxide poisons Complex IV of the Electron Transport Chain,' Fiona states proudly. 'Where EXACTLY in the cell is the Electron Transport Chain located?'",
+    choices: [
+      { t: "The inner mitochondrial membrane", s: 150, f: "Correct! The powerhouse of the cell. You pass the test. Fiona complains that her question was 'too easy' and storms off.", correct: true },
+      { t: "The cytoplasm", s: -50, f: "'That's where glycolysis happens, not the ETC,' Fiona says, shaking her head. 'Pathetic.'", correct: false },
+      { t: "The outer mitochondrial membrane", s: -50, f: "You missed by a few nanometers. Fiona takes great pleasure in correcting you.", correct: false },
+      { t: "The rough endoplasmic reticulum", s: -100, f: "'That's for protein synthesis! Do you even know what an organelle is?' Fiona asks the room.", correct: false }
+    ]
+  }
 ];
 
 let score = 0, deaths = 0, saved = 0, sanity = 100, caseQueue = [], currentCase = null, currentStep = 0;
@@ -11270,7 +11925,7 @@ function triggerRandomEvent() {
             const btn = document.createElement('button');
             btn.innerText = choice.t;
             btn.onclick = () => {
-                log(`> ATTENDING: ${choice.f}`, choice.correct ? "#33ff33" : "#ff3333");
+                log(`> Med Student: ${choice.f}`, choice.correct ? "#33ff33" : "#ff3333");
                 if (!choice.correct) sanity -= (20 * shiftMultiplier); else score += (100 * shiftMultiplier);
                 updateStats();
                 setTimeout(() => showContinue(nextCase), 3000);
@@ -11281,7 +11936,27 @@ function triggerRandomEvent() {
         const events = [
             { name: "LOBBY CHAOS: BEAR ATTACK", msg: "A black bear is in the lobby. Stress levels spike.", eff: () => { sanity -= 20; score -= 50; } },
             { name: "POWER OUTAGE", msg: "Operating by flashlight for 2 mins.", eff: () => { sanity -= 25; } },
-            { name: "THE PIE OF HOPE", msg: "A farmer brought pie. You feel like a person again.", eff: () => { sanity = Math.min(100, sanity + 40); } }
+            { name: "THE PIE OF HOPE", msg: "A farmer brought pie. You feel like a person again.", eff: () => { sanity = Math.min(100, sanity + 40); } },
+	{ name: "THE PHANTOM SKUNK", msg: "A patient's dog got skunked. They brought the dog inside. The ER smells like Satan's armpit.", eff: () => { sanity -= 25; } },
+            { name: "BRISKET BLESSING", msg: "The night shift charge nurse brought in her famous smoked brisket. You remember what happiness feels like.", eff: () => { sanity = Math.min(100, sanity + 30); } },
+            { name: "TRACTOR PULL DISASTER", msg: "Three guys come in covered in mud and manure after a tractor pull bet went wrong. It's everywhere.", eff: () => { sanity -= 15; } },
+            { name: "THE GOLDEN GRAHAM CRACKER", msg: "You found a secret, hidden stash of the 'good' premium graham crackers and peanut butter in the pediatric cart.", eff: () => { sanity = Math.min(100, sanity + 15); } },
+            { name: "MAYORAL SPLINTER", msg: "The town Mayor demands VIP Trauma 1 treatment... for a wooden splinter in his thumb. You must bite your tongue.", eff: () => { sanity -= 15; } },
+            { name: "CT SCANNER DEATH RATTLE", msg: "The only CT scanner in a 100-mile radius makes a loud CLUNK and starts smoking. Radiology is weeping.", eff: () => { sanity -= 30; } },
+            { name: "ATTENDING'S NOD", msg: "The notoriously angry Attending looks at your suture job and gives a single, approving nod. You are a god.", eff: () => { sanity = Math.min(100, sanity + 25); } },
+            { name: "METH-HEAD MONDAY", msg: "Someone is singing aggressive Italian opera completely naked in Trauma Bay 2. Security is hiding.", eff: () => { sanity -= 20; } },
+            { name: "VENISON CURRENCY", msg: "A local hunter tips the ER staff with a giant freezer bag of homemade venison jerky. It's incredible.", eff: () => { sanity = Math.min(100, sanity + 20); } },
+            { name: "THE EQUINE UBER", msg: "A drunk local rode his horse to the ER. The horse is now blocking the ambulance bay and eating the landscaping.", eff: () => { sanity -= 10; } },
+            { name: "KNITTED ARMOR", msg: "A sweet 90-year-old lady knits you a surprisingly comfortable, aggressively ugly neon sweater while in observation.", eff: () => { sanity = Math.min(100, sanity + 20); } },
+            { name: "THE ROOSTER STANDOFF", msg: "A farmer brings in a prize-winning rooster that swallowed a wedding ring. The bird is staring at you with murderous intent.", eff: () => { sanity -= 10; } },
+            { name: "SNOWED IN", msg: "A massive blizzard hits. The roads are closed. You are legally trapped here for a double shift.", eff: () => { sanity -= 35; } },
+            { name: "THERAPY CAT", msg: "A stray barn cat wanders into the breakroom and falls asleep on your lap. You are legally not allowed to move. Peace achieved.", eff: () => { sanity = Math.min(100, sanity + 35); } },
+            { name: "AWARD-WINNING RASH", msg: "A local insists on showing you his 'award-winning' rash. It's just severe ringworm, but he is incredibly proud of it.", eff: () => { sanity -= 5; } },
+            { name: "LIFEFLIGHT DROP", msg: "The LifeFlight helicopter pilot drops off a massive case of energy drinks for the ER staff before flying off into the sunset.", eff: () => { sanity = Math.min(100, sanity + 25); } },
+            { name: "THE FISHING LURE", msg: "A guy comes in with a rusty fishing lure hooked through his eyelid. Taking it out makes your own eyes water.", eff: () => { sanity -= 15; } },
+            { name: "SUPPLY CLOSET ZEN", msg: "The psychiatric hold patient escaped his room and is currently reorganizing the IV supplies by color perfectly. You just let him.", eff: () => { sanity = Math.min(100, sanity + 10); } },
+            { name: "COFFEE MACHINE REVIVAL", msg: "The ancient breakroom coffee machine suddenly whirs to life and brews a god-tier espresso. A true medical miracle.", eff: () => { sanity = Math.min(100, sanity + 30); } },
+            { name: "CHAINSAW JUGGLER", msg: "'Hold my beer' was heard at a local bonfire. The result just rolled through the double doors. Get the tourniquets.", eff: () => { sanity -= 25; } }
         ];
         const ev = events[Math.floor(Math.random() * events.length)];
         log(`\n*** RURAL EMERGENCY: ${ev.name} ***`, "#ffffff");
